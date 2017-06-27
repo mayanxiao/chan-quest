@@ -1,0 +1,70 @@
+.btns {
+	display: flex;
+	clear: both;
+}
+.upload-btn {
+	width: 100px;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	background-color: #00ce6c;
+	color: #fff;
+	cursor: pointer;
+}
+.convert {
+	background-color: #fff;
+	color: #00ce6c;
+}
+.uploader-list {
+	overflow: hidden;
+	position: relative;
+	z-index: 9;
+}
+.item {
+	width: 120px;
+	height: 140px;
+	float: left;
+	margin-right: 10px;
+}
+.item p {
+	margin: 0;
+    font-size: 12px;
+    color: #00ce6c;
+    text-align: center;
+}
+.item .file-img {
+	width: 120px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+	z-index: -1;
+}
+.item:hover .file-delete {
+	display: block;
+}
+.item .file-img img {
+	width: 60px;
+	height: 60px;
+	display: block;
+	margin: 0 auto;
+}
+.item .file-name {
+	text-align: center;
+    font-size: 14px;
+    width: 120px;
+}
+.error {
+	font-size: 12px;
+	color: #00ce6c;
+	padding-left: 34px;
+}
+.file-delete {
+	position: absolute;
+	right: -40px;
+	top: 2px;
+	font-size: 12px;
+	color: #00ce6c;
+	display: none;
+	cursor: pointer;
+	z-index: 99;
+}
