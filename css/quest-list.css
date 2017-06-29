@@ -1,0 +1,28 @@
+
+/**
+ * 模板选择
+ */
+.ql-model-example {
+	width: 114px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #00ce6c;
+	border: 1px solid #00ce6c;
+	float: left;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.ql-model-example:hover {
+	background-color: #00ce6c;
+	color: #fff;
+}
+.ql-button-wp {
+	width: 600px;
+	height: 30px;
+	float: right;
+}
+.active {
+	background-color: #00ce6c;
+	color: #fff;
+}

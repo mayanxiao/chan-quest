@@ -3,145 +3,75 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>知识库－员工</title>
+	<title>问卷制作-管理员</title>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/knowledge-manger-list.css">
-	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/quest-list.css">
+	<link rel="stylesheet" type="text/css" href="../css/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="../css/common.css">
 </head>
 <body>
-	<!-- <div class="kml-header-bac">
-		<div class="kml-header">
-			<span>
-				首页
-			</span>
-			<span>
-				我的工作
-			</span>
-		</div>
-	</div> -->
 	<div class="index-head">
-		
+		<div class="index-head-bac">
+			<img src="../static/imgHead/logo1@.png">
+			<span>
+				渠道集中运营管理平台
+			</span>
+		</div>
 	</div>
-	<div class="kml-main-bac" ms-controller="klKnowledgeList">
-		<div class="kml-main-title">
+	<div class="ql-main-bac" ms-controller="questList">
+		<div class="ql-main-title">
 			<span>
-				知识库&nbsp
+				问卷调查管理
 			</span>
-			>
+			&nbsp;>&nbsp;
 			<span>
-				&nbsp全部知识
+				问卷创建
 			</span>
 		</div>
-		<div class="kml-main-search">
-			<span>
-				全部知识
-			</span>
-			<p onclick="moreTagle()">
-				高级搜索
-			</p>
-			<p ms-click="getSearch()">
-				搜索
-			</p>
-			<input ms-duplex="@searchCont" type="text" name="" placeholder="支持模糊搜索">
+		<div class="ql-main-group" style="padding: 10px 0;">
+			<span style="margin: 7px 45px 0 15px;">模板选择</span>
+			<div class="ql-model-example" ms-click="modelTabIndex = $index" ms-class="[modelTabIndex == $index? 'active': '']" ms-for="($index, model) in modelList">{{model.title}}</div>
+			<div class="ql-model-example active">模板管理</div>
 		</div>
-		<div class="kml-m-s-more">
-			<span>
-				知识类型：
-			</span>
-			<select name="选择类型">
-				<option value="类型一">类型一</option>
-				<option value="类型二">类型二</option>
-				<option value="类型三">类型三</option>
-				<option value="类型四">类型四</option>
-			</select>
-			<span>
-				知识星级：
-			</span>
-			<input type="text" name="" placeholder="输入">
-			<span>
-				至
-			</span>
-			<input type="text" name="" placeholder="输入">
-			<p>
-				确定
-			</p>
+		<div class="ql-main-group">
+			<span>基础信息</span>
 		</div>
-		<div class="kml-main-all">
-			<p ms-for="title in titleList" ms-click="@statusChange(title.activeNum),@tabMainList">
-				{{title.name}}
-			</p>
+		<div class="ql-form-wrapper">
+			<div class="ql-form-cell">
+				<div class="ql-form-title">标题:</div>
+				<input type="text" class="ql-form-input" ms-duplex="questTitle">
+			</div>
 		</div>
-		<div class="kml-main-list-bac">
-			<div class="kml-main-list" ms-for="($recomId, recom) in @recoms">
-				<div class="kml-main-list-title" :css="setTitleBgColor($recomId)">
-					<p>
-						{{recom.knowledge.title}}
-					</p>
-					<span>
-						{{recom.status | setStatusColor}}
-					</span>
-					<div>
-						来源：{{recom.knowledge.createdBy.username}}
-					</div>
-					<strong ms-click="knowledgeLearn(recom.knowledge.file_type,recom.knowledge_id)">
-						学习
-					</strong>
-				</div>
-				<div class="kml-main-list-body">
-					<div>
-						<p>
-							知识类型：
-							<span>
-								{{recom.knowledge.category.name}}
-							</span>
-						</p>
-						<p>
-							星级：
-							<span>
-								{{recom.knowledge.avg_score | starsNumSet}}
-							</span>
-							星
-						</p>
-						<p>
-							更新时间：
-							<span>
-								{{recom.knowledge.updated_at*1000 | date("yyyy-MM-dd")}}
-							</span>
-						</p>
-						<p>
-							学习人次：
-							<span>
-								{{recom.knowledge.studied_count}}
-							</span>
-							人已学习&nbsp|&nbsp{{recom.knowledge.evaluate_count}}人已评价
-						</p>
-					</div>
-					<p>
-					{{recom.knowledge.intro}}
-					</p>
+		<div class="ql-form-wrapper">
+			<div class="ql-form-cell">
+				<div class="ql-form-title">有效日期:</div>
+				<div class="ql-button-wp">
+					<button type="button" class="btn btn-default" id="daterange-btn">
+						<span><i class="fa fa-calendar"></i>日期选择</span>
+						<i class="fa fa-caret-down"></i>
+					</button>
 				</div>
 			</div>
 		</div>
+		<div class="ql-form-wrapper">
+			<div class="ql-form-cell">
+				<div class="ql-form-title">简介:</div>
+				<textarea class="ql-form-textarea" ms-duplex="questIntro"></textarea>
+			</div>
+		</div>
+		<div class="ql-form-wrapper">
+			<div class="ql-form-cell">
+				<div class="ql-form-title">目标人群:</div>
+				
+			</div>
+		</div>
 	</div>
-
-
+	
 	<script src="../common/avalon.js"></script>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script src="../js/jquery.raty.min.js"></script>
-	<script src="../js/knowledge.js"></script>
-	<script src="../js/knowledge-list.js"></script>
-	<script>
-		var preUserInfo = {
-			accessToken : "xfbR4fAzjqar52sQ1VrO9FoEbVPB9Lde",
-			userId : 1
-		}
-		localStorage.accessToken = preUserInfo.accessToken
-		localStorage.userId = preUserInfo.userId
-		$(document).ready(function(){
-			checkColor()
-			startStatusChange()
-		})
-	</script>
+	<script src="../js/moment.js"></script>
+	<script src="../js/daterangepicker.js"></script>
+	<script src="../js/common.js"></script>
+	<script src="../js/quest-list.js"></script>
 </body>
 </html>
